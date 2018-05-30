@@ -24,5 +24,10 @@ namespace LINQToXML
         {
             InitializeComponent();
         }
+
+        private void ButtonAccept_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -32,7 +32,7 @@
                         <TextBlock HorizontalAlignment="Center">to</TextBlock>
                         <TextBox HorizontalContentAlignment="Center"></TextBox>
                     </UniformGrid>
-                    <Button Margin="5">Accept</Button>
+                    <Button Margin="5" Click="ButtonAccept_OnClick">Accept</Button>
                 </StackPanel>
             </GroupBox>
             
