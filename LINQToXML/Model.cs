@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Linq;
 
 
@@ -22,35 +23,48 @@ namespace LINQToXML
     {
         private XDocument _doc;
         private IEnumerable<String> _categories;
-        private IEnumerable<XElement> _books;
+        private IEnumerable<Book> _books;
 
         public Model()
         {
             try
             {
-                _doc = XDocument.Load("books.xml");
+                _doc = XDocument.Load(@"E:\GoogleDrive\Программовня\ADONet\Examples\LINQ\LINQToXML\LINQToXML\books.xml");
             }
             catch (Exception e)
             {
-                //error
+                MessageBox.Show(e.Message, "Ooops", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
             }
 
             LoadBooks();
             LoadCategories();
         }
 
+        public IEnumerable<string> Categories
+        {
+            get { return _categories; }
+            set { _categories = value; }
+        }
+
+        public IEnumerable<Book> Books
+        {
+            get { return _books; }
+            set { _books = value; }
+        }
+
         private void LoadCategories()
         {
             var res = from b in _doc.Descendants("book")
                 select b.Descendants("genre").ToString();
-            _categories =  res;
+            Categories =  res;
         }
 
         private void LoadBooks()
         {
-            var res = from b in _doc.Descendants("book")
-                select b;
-            _books = res;
+            var res = (from b in _doc.Descendants("book")
+                select new Book(b.FirstAttribute.Value, new Author(b.Element("author").Value), b.Element("title").Value, b.Element("genre").Value, b.Element("price").Value, b.Element("publish_date").Value, b.Element("description").Value)).ToList();
+            Books = res;
         }
     }
 }
