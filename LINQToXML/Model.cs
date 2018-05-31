@@ -55,8 +55,8 @@ namespace LINQToXML
 
         private void LoadCategories()
         {
-            var res = from b in _doc.Descendants("book")
-                select b.Descendants("genre").ToString();
+            var res = (from b in _doc.Descendants("book")
+                select b.Element("genre").Value).Distinct();
             Categories =  res;
         }
 
