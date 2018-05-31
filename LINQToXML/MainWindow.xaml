@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LINQToXML"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="Books" Height="450" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"></RowDefinition>
@@ -28,9 +28,9 @@
                     </UniformGrid>
                     <UniformGrid Columns="4" Margin="5">
                         <TextBlock>Price:</TextBlock>
-                        <TextBox HorizontalContentAlignment="Center"></TextBox>
+                        <TextBox HorizontalContentAlignment="Center" Name="PriceFrom"></TextBox>
                         <TextBlock HorizontalAlignment="Center">to</TextBlock>
-                        <TextBox HorizontalContentAlignment="Center"></TextBox>
+                        <TextBox HorizontalContentAlignment="Center" Name="PriceTo"></TextBox>
                     </UniformGrid>
                     <Button Margin="5" Click="ButtonAccept_OnClick">Accept</Button>
                 </StackPanel>
